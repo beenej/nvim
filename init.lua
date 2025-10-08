@@ -597,7 +597,10 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
-        --
+        html = {
+          filetypes = { 'html', 'handlebars' },
+        },
+
 
         lua_ls = {
           -- cmd = { ... },
