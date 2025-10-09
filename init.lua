@@ -587,7 +587,7 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         clangd = {},
-        gopls = {},
+        -- gopls = {},
         pyright = {},
         rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -920,6 +920,29 @@ end,
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  },
+
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-tree/nvim-web-devicons", -- optional, but recommended
+    },
+    lazy = false, -- neo-tree will lazily load itself
+    ---@module 'neo-tree'
+    ---@type neotree.Config
+    opts = {
+      -- options here
+    },
+
+    config = function(_, opts)
+      require('neo-tree').setup(opts)
+
+      -- keymap for opening neo-tree
+      vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', {desc = 'Toggle Neo-tree'})
+    end,
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
