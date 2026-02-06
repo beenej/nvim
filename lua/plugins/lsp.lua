@@ -136,6 +136,7 @@ return {
     -- LSP SERVERS
     -------------------------------------------------------
     local servers = {
+      kotlin_language_server = {},
       clangd = {},
       pyright = {},
       rust_analyzer = {},
