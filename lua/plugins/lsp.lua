@@ -130,7 +130,17 @@ return {
       pyright = {},
       rust_analyzer = {},
       ts_ls = {},
-      prismals = {},
+      prismals = {
+        handlers = {
+          ['window/showMessage'] = function(_, result, ctx, config)
+            if result.message:match 'Prisma 1 datamodel' then
+              return
+            end
+
+            vim.lsp.handlers['window/showMessage'](_, result, ctx, config)
+          end,
+        },
+      },
       html = {
         filetypes = { 'html', 'handlebars' },
       },
